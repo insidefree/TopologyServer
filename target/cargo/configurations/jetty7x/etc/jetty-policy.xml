@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<!-- =============================================================== -->
+<!-- mechanic for starting jetty policy                              -->
+<!--                                                                 -->
+<!-- =============================================================== -->
+
+
+
+<Configure id="Policy" class="org.eclipse.jetty.policy.JettyPolicyConfigurator">
+
+    <Call name="setPolicyDirectory">
+       <Arg><Property name="config.home"/>/lib/policy</Arg>
+    </Call>
+
+    <Call name="addProperty">
+      <Arg>config.home</Arg>
+      <Arg><Property name="config.home"/></Arg>
+    </Call>
+    
+    <Call name="initialize"/>
+</Configure>

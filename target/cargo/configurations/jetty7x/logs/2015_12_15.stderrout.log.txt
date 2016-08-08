@@ -1,0 +1,15 @@
+2015-12-15 14:13:46.800:INFO:oejs.Server:jetty-7.6.17.v20150415
+2015-12-15 14:13:46.851:INFO:oejdp.ScanningAppProvider:Deployment monitor C:\Users\Denis\Google Drive\WorkSpace02\IDEA\TopologyServer\target\cargo\configurations\jetty7x\webapps at interval 1
+2015-12-15 14:13:46.867:INFO:oejd.DeploymentManager:Deployable added: C:\Users\Denis\Google Drive\WorkSpace02\IDEA\TopologyServer\target\cargo\configurations\jetty7x\webapps\cargocpc.war
+2015-12-15 14:13:46.946:INFO:oejw.WebInfConfiguration:Extract jar:file:/C:/Users/Denis/Google%20Drive/WorkSpace02/IDEA/TopologyServer/target/cargo/configurations/jetty7x/webapps/cargocpc.war!/ to C:\Users\Denis\AppData\Local\Temp\jetty-0.0.0.0-8080-cargocpc.war-_cargocpc-any-\webapp
+2015-12-15 14:13:47.675:INFO:oejsh.ContextHandler:started o.e.j.w.WebAppContext{/cargocpc,file:/C:/Users/Denis/AppData/Local/Temp/jetty-0.0.0.0-8080-cargocpc.war-_cargocpc-any-/webapp/},C:\Users\Denis\Google Drive\WorkSpace02\IDEA\TopologyServer\target\cargo\configurations\jetty7x\webapps\cargocpc.war
+2015-12-15 14:13:47.795:INFO:oejdp.ScanningAppProvider:Deployment monitor C:\Users\Denis\Google Drive\WorkSpace02\IDEA\TopologyServer\target\cargo\configurations\jetty7x\contexts at interval 1
+2015-12-15 14:13:47.800:INFO:oejd.DeploymentManager:Deployable added: C:\Users\Denis\Google Drive\WorkSpace02\IDEA\TopologyServer\target\cargo\configurations\jetty7x\contexts\TopologyServer.xml
+2015-12-15 14:13:48.766:INFO:oejw.WebInfConfiguration:Extract jar:file:/C:/Users/Denis/Google%20Drive/WorkSpace02/IDEA/TopologyServer/target/TopologyServer-1.0-SNAPSHOT.war!/ to C:\Users\Denis\Google Drive\WorkSpace02\IDEA\TopologyServer\target\TopologyServer-1.0-SNAPSHOT
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2015-12-15 14:14:01.090:INFO:/TopologyServer:Initializing Spring root WebApplicationContext
+2015-12-15 14:14:04.003:INFO:oejsh.ContextHandler:started o.e.j.w.WebAppContext{/TopologyServer,file:/C:/Users/Denis/Google%20Drive/WorkSpace02/IDEA/TopologyServer/target/TopologyServer-1.0-SNAPSHOT/},c:\Users\Denis\Google Drive\WorkSpace02\IDEA\TopologyServer\target\TopologyServer-1.0-SNAPSHOT.war
+2015-12-15 14:14:04.091:INFO:/TopologyServer:Initializing Spring FrameworkServlet 'spring'
+2015-12-15 14:14:04.694:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:8080

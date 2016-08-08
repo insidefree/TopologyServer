@@ -1,0 +1,48 @@
+* { margin: 0; padding: 0; }
+#filter{
+    /*width: 180px;
+    height : 600px;
+    float: left;*/
+}
+#mynetwork {
+    width: 100%;
+    height: 700px;
+    /*float: right;*/
+    border: 1px solid lightgray;
+}
+
+#event {
+    width: 100%;
+    height: 150px;
+    /*float: right;*/
+    border: 1px solid lightgray;
+}
+
+#btnSelectedHost{
+    float: right;
+    margin-top: 5px;
+}
+
+#lstHosts{
+    float: left;
+    overflow: scroll;
+
+}
+
+#top{
+    width: 1000px;
+    margin-top: 5px;
+    float: left;
+}
+
+#lstHosts #btnSelected{
+    clear: both;
+}
+
+#lstHbaWWNs{
+    float: left;
+    overflow: scroll;
+
+}
+
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.correlata.topology.controllers"/>
+    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <!--<bean name="loadListFromDB" init-method="fillListFromDB" class="com.correlata.topology.controllers"/>-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/jsp/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+
+
+    <bean id="zoneService" class="com.correlata.topology.repository.ZoneService"></bean>
+
+    <!--&lt;!&ndash; Initialization for data source &ndash;&gt;-->
+    <!--<bean id="dataSource"-->
+          <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>-->
+        <!--<property name="url" value="jdbc:oracle:thin:@itaz:1521:itazdb" />-->
+        <!--<property name="username" value="itsmappl" />-->
+        <!--<property name="password" value="itsmappl" />-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; Definition for studentJDBCTemplate bean &ndash;&gt;-->
+    <!--<bean id="zoneRepositoryOracle"-->
+          <!--class="com.correlata.topology.repository.ZonesRepositoryOracle">-->
+        <!--<property name="dataSource"  ref="dataSource" />-->
+    <!--</bean>-->
+
+</beans>

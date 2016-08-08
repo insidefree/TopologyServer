@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="resources/bootstrap-3.3.6-dist/css/bootstrap.min.css" type="text/css"/>
+<script src="resources/jQuery/jquery-2.1.4.js" type="text/javascript"></script>
+<script src="resources/bootstrap-3.3.6-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!-- Include the plugin's CSS and JS: -->
+<script src="resources/bootstrap-multiselect-master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+<link rel="stylesheet" href="resources/bootstrap-multiselect-master/dist/css/bootstrap-multiselect.css" type="text/css"/>
+<!--<link rel="stylesheet" href="resources/bootstrap-multiselect-master/docs/css/bootstrap-example.css" type="text/css"/>-->
+
+<title>Topology map</title>
+<style>
+
+    body {
+        font-family:arial, sans-serif;
+        font-weight:normal;
+        font-size:12px;
+        background:#3f4348 url('bg.png');
+    }
+
+    html, body{
+        height:90%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container{
+        margin: 0;
+        padding: 0;
+    }
+
+    .multiselect{
+        background: #575e63; /* fallback colour */
+        display: block;
+        width: 20em;
+        border: 1px solid #575e63;
+        color: #fff;
+        text-shadow: 0 1px 1px #000;
+        letter-spacing: 0.09em;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#575e63), to(#3f4347));
+        background: -webkit-linear-gradient(top, #575e63, #3f4347);
+        background: -moz-linear-gradient(top, #575e63, #3f4347);
+        background: -ms-linear-gradient(top, #575e63, #3f4347);
+        background: -o-linear-gradient(top, #575e63, #3f4347);
+        border-radius: 0px;
+    }
+    .multiselect:hover{
+        color: #fff;
+        background: #566f82; /* fallback colour */
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#566f82), to(#3e505e));
+        background: -webkit-linear-gradient(top, #566f82, #3e505e);
+        background: -moz-linear-gradient(top, #566f82, #3e505e);
+        background: -ms-linear-gradient(top, #566f82, #3e505e);
+        background: -o-linear-gradient(top, #566f82, #3e505e);
+        border-radius: 0px;
+    }
+    .multiselect:checked{
+        background: #44c6eb; /* fallback colour */
+        border-top:1px solid #878e98;
+        border-bottom:1px solid #2799db;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#44c6eb), to(#2799db));
+        background: -webkit-linear-gradient(top, #44c6eb, #2799db);
+        background: -moz-linear-gradient(top, #44c6eb, #2799db);
+        background: -ms-linear-gradient(top, #44c6eb, #2799db);
+        background: -o-linear-gradient(top, #44c6eb, #2799db);
+        border-radius: 0px;
+    }
+
+    .btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default {
+        background: #44c6eb; /* fallback colour */
+        border-top:1px solid #878e98;
+        border-bottom:1px solid #2799db;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#44c6eb), to(#2799db));
+        background: -webkit-linear-gradient(top, #44c6eb, #2799db);
+        background: -moz-linear-gradient(top, #44c6eb, #2799db);
+        background: -ms-linear-gradient(top, #44c6eb, #2799db);
+        background: -o-linear-gradient(top, #44c6eb, #2799db);
+        border-radius: 0px;
+        color: #fff;
+    }
+
+    .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+        color: #fff;
+        /*background-color: #d4d4d4;*/
+        /*border-color: #8c8c8c;*/
+    }
+
+    /*.dropdown-menu {*/
+    /*position: absolute;*/
+    /*top: 100%;*/
+    /*left: 0;*/
+    /*z-index: 1000;*/
+    /*display: none;*/
+    /*float: left;*/
+    /*min-width: 160px;*/
+    /*padding: 5px 0;*/
+    /*margin: 2px 0 0;*/
+    /*font-size: 14px;*/
+    /*text-align: left;*/
+    /*list-style: none;*/
+    /*background-color: #3f4348;*/
+    /*/!*-webkit-background-clip: padding-box;*!/*/
+    /*/!*background-clip: padding-box;*!/*/
+    /*/!*border: 1px solid #ccc;*!/*/
+    /*/!*border: 1px solid rgba(0,0,0,.15);*!/*/
+    /*border-radius: 0px;*/
+    /*/!*-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);*!/*/
+    /*/!*box-shadow: 0 6px 12px rgba(0,0,0,.175);*!/*/
+    /*}*/
+
+    .btn-default:hover {
+        color: #fff;
+        background-color: #e6e6e6;
+        /*border-color: #adadad;*/
+    }
+    .btn-default.focus, .btn-default:focus {
+        color: greenyellow;
+        background-color: #e6e6e6;
+        border-color: #8c8c8c;
+    }
+    .btn.focus, .btn:focus, .btn:hover {
+        color: greenyellow;
+        text-decoration: none;
+    }
+    .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+        color: #fff;
+        text-decoration: none;
+        border-bottom:1px solid #2799db;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#44c6eb), to(#2799db));
+        background: -webkit-linear-gradient(top, #44c6eb, #2799db);
+        background: -moz-linear-gradient(top, #44c6eb, #2799db);
+        background: -ms-linear-gradient(top, #44c6eb, #2799db);
+        background: -o-linear-gradient(top, #44c6eb, #2799db);
+        outline: 0;
+    }
+
+    .multiselect-selected-text{
+        float: left;
+    }
+
+    .caret{
+        float: right;
+    }
+
+    .butt{
+        background: #44c6eb; /* fallback colour */
+        border-top:1px solid #878e98;
+        border-bottom:1px solid #2799db;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#44c6eb), to(#2799db));
+        background: -webkit-linear-gradient(top, #44c6eb, #2799db);
+        background: -moz-linear-gradient(top, #44c6eb, #2799db);
+        background: -ms-linear-gradient(top, #44c6eb, #2799db);
+        background: -o-linear-gradient(top, #44c6eb, #2799db);
+        border-radius: 0px;
+    }
+
+    .btn-primary:active, .btn-primary.active {
+        /*background: #007299;*/
+        box-shadow: none;
+        border: 0px;
+    }
+
+
+</style>
+
+
+
+</head>
+
+<script type="text/javascript">
+
+
+    var temp = "";
+    var bodier = 0;
+    var selecter = 0;
+
+    var selectedHosts = [];
+    var selectedSwitches = [];
+    var selectedArrays = [];
+    var selectedZones = [];
+
+    $(document).ready(function() {
+        $('#opts_0').multiselect({
+            includeSelectAllOption: true,
+            nonSelectedText: 'Hosts',
+            selectAllValue: 'multiselect-all',
+            enableCaseInsensitiveFiltering: true,
+            enableFiltering: true,
+            onChange: function(element, checked) {
+                var brands = $('#opts_0 option:selected');
+                var selected = [];
+                $(brands).each(function(index, brand){
+                    selected.push($(this).attr('id'));
+                });
+                selectedSwitches = selected;
+                console.log(selected);
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#opts_1').multiselect({
+            includeSelectAllOption: true,
+            nonSelectedText: 'Switches',
+            selectAllValue: 'multiselect-all',
+            enableCaseInsensitiveFiltering: true,
+            enableFiltering: true,
+            onChange: function(element, checked) {
+                var brands = $('#opts_1 option:selected');
+                var selected = [];
+                $(brands).each(function(index, brand){
+                    selected.push($(this).attr('id'));
+                });
+                selectedSwitches = selected;
+                console.log(selected);
+            }
+        });
+    });
+
+
+    $(document).ready(function() {
+        $('#opts_2').multiselect({
+            includeSelectAllOption: true,
+            nonSelectedText: 'Arrays',
+            selectAllValue: 'multiselect-all',
+            enableCaseInsensitiveFiltering: true,
+            enableFiltering: true,
+            onChange: function(element, checked) {
+                var brands = $('#opts_2 option:selected');
+                var selected = [];
+                $(brands).each(function(index, brand){
+                    selected.push($(this).attr('id'));
+                });
+                selectedSwitches = selected;
+                console.log(selected);
+            }
+        });
+    });
+
+
+    $(document).ready(function() {
+        $('#opts_3').multiselect({
+            includeSelectAllOption: true,
+            nonSelectedText: 'Zones',
+            selectAllValue: 'multiselect-all',
+            enableCaseInsensitiveFiltering: true,
+            enableFiltering: true,
+            onChange: function(element, checked) {
+                var brands = $('#opts_3 option:selected');
+                var selected = [];
+                $(brands).each(function(index, brand){
+                    selected.push($(this).attr('id'));
+                });
+                selectedSwitches = selected;
+                console.log(selected);
+            }
+        });
+    });
+
+
+
+
+    function increaseHeight(divId, event){
+        if (selecter == 0) {
+            if (temp == divId) {
+
+                document.getElementById(divId).style.height = "";
+                temp = "";
+            } else {
+                if (temp != "") {
+                    document.getElementById(temp).style.height = "";
+                }
+                document.getElementById(divId).style.height = "265px";
+                temp = divId;
+            }
+            bodier = 1;
+            selecter = 0;
+        } else {
+            selecter = 0;
+        }
+
+    }
+
+    function decreaseHeight(){
+        if (bodier == 1){
+            bodier = 0;
+        } else if (bodier == 0){
+            document.getElementById(temp).style.height = "";
+            bodier = 0;
+        }
+    }
+
+    function kostyl(){
+        selecter = 1;
+    }
+
+
+    //    aria-expanded="true"
+
+
+</script>
+
+<!--rgba(100, 102, 113, 0.2)-->
+<body id="bbody" onclick="decreaseHeight()">
+
+<div style="height: 100px; width: 100%; background-color:  transparent">
+    <p style="color: white; font-family: 'Morning Song 4'; font-size: 4em; margin-left: 30px; margin-top: 10px">Correlata Topology Map</p>
+
+</div>
+<div id="main" style="height: 98%; width: 100%; margin-left: 2% ">
+    <div class="container" id="mynetwork" style="float: left; width: 65%; background-image:url(graphy.png);display: inline-block; ">
+        <div style="; width: 95%; height: 800px; background-color:transparent;  ">
+            <canvas style="; margin-left:5%;margin-top: 5%; margin-bottom: 5%" id="0_canvas" class="canvas"></canvas>
+        </div>
+    </div>
+    <div  id="properties" style=" float: left;width: 282px;margin-left: 10px">
+        <div class="container" style="background-color: rgba(100, 102, 113, 0.2);width: 283px ">
+            <div id="div_opts_0"  class="divchiki" onmouseup="increaseHeight(this.id, event)">
+                <select id="opts_0" multiple="multiple">
+                    <option id="jopa1" value="1">Option 1</option>
+                    <option id="jopa2"value="2">Option 2</option>
+                    <option id="jopa3"value="3">Option 3</option>
+                    <option id="jopa4"value="4">Option 4</option>
+                    <option id="jopa5"value="5">Option 5</option>
+                    <option id="jopa6"value="6">Option 6</option>
+                </select>
+            </div>
+            <div id="div_opts_1"  class="divchiki" onmouseup="increaseHeight(this.id, event)">
+                <select id="opts_1" multiple="multiple" onmouseup="kostyl()">
+                    <option id="" value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                    <option value="5">Option 5</option>
+                    <option value="6">Option 6</option>
+                </select>
+            </div>
+            <div id="div_opts_2" class="divchiki" onmouseup="increaseHeight(this.id, event)">
+                <select id="opts_2" multiple="multiple">
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                    <option value="5">Option 5</option>
+                    <option value="6">Option 6</option>
+                </select>
+            </div>
+            <div id="div_opts_3"  class="divchiki" onmouseup="increaseHeight(this.id, event)">
+                <select id="opts_3" multiple="multiple">
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                    <option value="5">Option 5</option>
+                    <option value="6">Option 6</option>
+                </select>
+            </div>
+        </div>
+        <input type="button" class="btn btn-success" id="btnSelected" value="Draw" />
+        <input type="button" class="btn btn-danger" id="resetAll" value="Destroy the network" style="float: right">
+
+        <div id="info"></div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
